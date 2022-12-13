@@ -1,0 +1,44 @@
+#  GLPK model file created by SUN for RO teaching
+
+
+###############################  Model ###############################
+
+
+###############################  Sets  ###############################
+
+set PERSONNE;
+
+set TRAVAIL;
+
+###################  Constants: Data to load   #########################
+
+param coupDeFormation{i in TRAVAIL, j in PERSONNE};
+param nbPersonEtTravail;
+
+################### Variables ###################
+
+var Xij{i in TRAVAIL, j in PERSONNE} binary; #Xij = 1 si Person_i fait Travail_j, 0 sinon
+
+################### Constraints ###################
+
+subject to 
+    UnePersonneFaitUnEtUnSeulTravail {j in PERSONNE}:
+        sum{i in TRAVAIL} Xij[i,j] = 1;
+    UnTravailFaitParUneEtUneSeulePersonne {i in TRAVAIL}:
+        sum{j in PERSONNE} Xij[i,j] = 1;
+
+###### Objective ######
+
+minimize CoutDeFormationTotal: 
+		sum{i in TRAVAIL, j in PERSONNE} Xij[i,j]*coupDeFormation[i,j];
+
+###### Resolution ######
+printf "---Debut de la resolution ---\n";
+solve;
+printf "---Fin de la resolution ---\n";
+display Xij;
+printf "Le coût de formation total minimal est de ";
+printf CoutDeFormationTotal;
+printf "€\n";
+
+end;

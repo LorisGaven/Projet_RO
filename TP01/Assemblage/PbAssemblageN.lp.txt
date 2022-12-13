@@ -1,0 +1,15 @@
+\* Problem: Assemblage de voitures *\
+
+Maximize
+ MargeTotale: + 9000 modeleS + 10000 modeleL 
+
+Subject To
+ TempsDeTravail: + 0.06 modeleL + 0.05 modeleS <= 60
+ TailleDuParking: + 10 modeleL + 20 modeleS <= 15000
+ ProductionMaxLuxe: modeleL <= 800
+
+General
+ modeleS
+ modeleL
+
+End

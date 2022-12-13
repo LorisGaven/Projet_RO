@@ -1,0 +1,31 @@
+# Autres données possibles pour 
+# le problème de gestion du 
+# personnel
+
+data;
+
+set PERSONNE := 
+p1
+p2
+p3
+p4
+p5;
+
+set TRAVAIL :=
+t1
+t2
+t3
+t4
+t5;
+
+param coupDeFormation: p1 p2 p3 p4 p5 :=
+                    t1 12 50 14 75 48
+                    t2 46 82 65 14 75
+                    t3 71 23 58 96 64
+                    t4 52 41 85 73 34
+                    t5 12 56 78 45 23 ; 
+
+param nbPersonEtTravail := 5;
+
+end;
+

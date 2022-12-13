@@ -1,0 +1,13 @@
+c Problem:    
+c Rows:       2
+c Columns:    2
+c Non-zeros:  4
+c Status:     OPTIMAL
+c Objective:  Benefice = 1137.5 (MAXimum)
+c
+s bas 2 2 f f 1137.5
+i 1 u 360 0.104166666666667
+i 2 u 480 2.29166666666667
+j 1 b 5.25 0
+j 2 b 12.5 0
+e o f

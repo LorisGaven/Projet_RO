@@ -1,0 +1,10 @@
+Maximize
+  Benefice : 10000L + 9000S
+
+Subject To
+  HeureTravail : 0.06L + 0.05S <= 60
+  SurfaceMax : 10L + 20S <= 15000
+  MaxL : L <= 800
+
+End
+

@@ -1,0 +1,88 @@
+\* Problem: ModelGestionDuPersonnel *\
+
+Minimize
+ CoutDeFormationTotal: + 12 Xij(t1,p1) + 46 Xij(t2,p1) + 71 Xij(t3,p1)
+ + 52 Xij(t4,p1) + 12 Xij(t5,p1) + 50 Xij(t1,p2) + 82 Xij(t2,p2)
+ + 23 Xij(t3,p2) + 41 Xij(t4,p2) + 56 Xij(t5,p2) + 14 Xij(t1,p3)
+ + 65 Xij(t2,p3) + 58 Xij(t3,p3) + 85 Xij(t4,p3) + 78 Xij(t5,p3)
+ + 75 Xij(t1,p4) + 14 Xij(t2,p4) + 96 Xij(t3,p4) + 73 Xij(t4,p4)
+ + 45 Xij(t5,p4) + 48 Xij(t1,p5) + 75 Xij(t2,p5) + 64 Xij(t3,p5)
+ + 34 Xij(t4,p5) + 23 Xij(t5,p5)
+
+Subject To
+ UnePersonneFaitUnEtUnSeulTravail(p1): + Xij(t1,p1) + Xij(t2,p1)
+ + Xij(t3,p1) + Xij(t4,p1) + Xij(t5,p1) = 1
+ UnePersonneFaitUnEtUnSeulTravail(p2): + Xij(t1,p2) + Xij(t2,p2)
+ + Xij(t3,p2) + Xij(t4,p2) + Xij(t5,p2) = 1
+ UnePersonneFaitUnEtUnSeulTravail(p3): + Xij(t1,p3) + Xij(t2,p3)
+ + Xij(t3,p3) + Xij(t4,p3) + Xij(t5,p3) = 1
+ UnePersonneFaitUnEtUnSeulTravail(p4): + Xij(t1,p4) + Xij(t2,p4)
+ + Xij(t3,p4) + Xij(t4,p4) + Xij(t5,p4) = 1
+ UnePersonneFaitUnEtUnSeulTravail(p5): + Xij(t1,p5) + Xij(t2,p5)
+ + Xij(t3,p5) + Xij(t4,p5) + Xij(t5,p5) = 1
+ UnTravailFaitParUneEtUneSeulePersonne(t1): + Xij(t1,p1) + Xij(t1,p2)
+ + Xij(t1,p3) + Xij(t1,p4) + Xij(t1,p5) = 1
+ UnTravailFaitParUneEtUneSeulePersonne(t2): + Xij(t2,p1) + Xij(t2,p2)
+ + Xij(t2,p3) + Xij(t2,p4) + Xij(t2,p5) = 1
+ UnTravailFaitParUneEtUneSeulePersonne(t3): + Xij(t3,p1) + Xij(t3,p2)
+ + Xij(t3,p3) + Xij(t3,p4) + Xij(t3,p5) = 1
+ UnTravailFaitParUneEtUneSeulePersonne(t4): + Xij(t4,p1) + Xij(t4,p2)
+ + Xij(t4,p3) + Xij(t4,p4) + Xij(t4,p5) = 1
+ UnTravailFaitParUneEtUneSeulePersonne(t5): + Xij(t5,p1) + Xij(t5,p2)
+ + Xij(t5,p3) + Xij(t5,p4) + Xij(t5,p5) = 1
+
+Bounds
+ 0 <= Xij(t1,p1) <= 1
+ 0 <= Xij(t2,p1) <= 1
+ 0 <= Xij(t3,p1) <= 1
+ 0 <= Xij(t4,p1) <= 1
+ 0 <= Xij(t5,p1) <= 1
+ 0 <= Xij(t1,p2) <= 1
+ 0 <= Xij(t2,p2) <= 1
+ 0 <= Xij(t3,p2) <= 1
+ 0 <= Xij(t4,p2) <= 1
+ 0 <= Xij(t5,p2) <= 1
+ 0 <= Xij(t1,p3) <= 1
+ 0 <= Xij(t2,p3) <= 1
+ 0 <= Xij(t3,p3) <= 1
+ 0 <= Xij(t4,p3) <= 1
+ 0 <= Xij(t5,p3) <= 1
+ 0 <= Xij(t1,p4) <= 1
+ 0 <= Xij(t2,p4) <= 1
+ 0 <= Xij(t3,p4) <= 1
+ 0 <= Xij(t4,p4) <= 1
+ 0 <= Xij(t5,p4) <= 1
+ 0 <= Xij(t1,p5) <= 1
+ 0 <= Xij(t2,p5) <= 1
+ 0 <= Xij(t3,p5) <= 1
+ 0 <= Xij(t4,p5) <= 1
+ 0 <= Xij(t5,p5) <= 1
+
+Generals
+ Xij(t1,p1)
+ Xij(t2,p1)
+ Xij(t3,p1)
+ Xij(t4,p1)
+ Xij(t5,p1)
+ Xij(t1,p2)
+ Xij(t2,p2)
+ Xij(t3,p2)
+ Xij(t4,p2)
+ Xij(t5,p2)
+ Xij(t1,p3)
+ Xij(t2,p3)
+ Xij(t3,p3)
+ Xij(t4,p3)
+ Xij(t5,p3)
+ Xij(t1,p4)
+ Xij(t2,p4)
+ Xij(t3,p4)
+ Xij(t4,p4)
+ Xij(t5,p4)
+ Xij(t1,p5)
+ Xij(t2,p5)
+ Xij(t3,p5)
+ Xij(t4,p5)
+ Xij(t5,p5)
+
+End

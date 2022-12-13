@@ -1,0 +1,46 @@
+#  GLPK model file created by SUN for RO teaching
+
+###############################  Model ###############################
+
+###################  Constants: Data to load   #########################
+
+param nbDemande;
+param nbFluide;
+param nbMagasin;
+
+param Demande{i in 1..nbDemande, j in 1..nbFluide};
+param Stock{i in 1..nbMagasin, j in 1..nbFluide};
+param Cout{i in 1..nbMagasin, j in 1..nbFluide};
+
+################### Variables ###################
+
+#Quantité de fluide_i envoyé par le magasin_j au client_k
+var x{i in 1..nbFluide, j in 1..nbMagasin, k in 1..nbDemande} integer;
+
+###### Objective ######
+
+minimize CoutTotal: 
+	sum{i in 1..nbFluide, j in 1..nbMagasin, k in 1..nbDemande} x[i,j,k]*Cout[j,i];
+        
+################### Constraints ###################
+
+subject to 
+    VenteCorrespondDemandeClient {k in 1..nbDemande, i in 1..nbFluide}:
+        sum{j in 1..nbMagasin} x[i,j,k] = Demande[k,i];
+    VenteInfOuEgalAuStock {i in 1..nbFluide, j in 1..nbMagasin}:
+        sum{k in 1..nbDemande} x[i,j,k] <= Stock[j,i];
+    QuantiteEnvoyePositive {i in 1..nbFluide, j in 1..nbMagasin, k in 1..nbDemande}:
+        x[i,j,k] >= 0;
+
+###### Resolution ######
+
+printf "\n---Debut de la resolution ---\n";
+solve;
+printf "---Fin de la resolution ---\n\n";
+
+display x;
+printf "\nLe coût total des demandes est de ";
+printf CoutTotal;
+printf "\n\n";
+
+end;

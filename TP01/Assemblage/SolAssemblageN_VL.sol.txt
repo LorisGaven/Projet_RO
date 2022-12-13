@@ -1,0 +1,32 @@
+Problem:    
+Rows:       3
+Columns:    2 (2 integer, 0 binary)
+Non-zeros:  5
+Status:     INTEGER OPTIMAL
+Objective:  MargeTotale = 10284000 (MAXimum)
+
+   No.   Row name        Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 TempsDeTravail
+                                  60                          60 
+     2 TailleDuParking
+                               14970                       15000 
+     3 ProductionMaxLuxe
+                                 645                         800 
+
+   No. Column name       Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 modeleS      *            426             0               
+     2 modeleL      *            645             0               
+
+Integer feasibility conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output

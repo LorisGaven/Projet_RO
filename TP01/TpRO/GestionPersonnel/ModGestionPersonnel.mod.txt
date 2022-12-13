@@ -1,0 +1,24 @@
+# donnees externes
+param N;
+param C{i in 1..N, j in 1..N};
+
+var x{i in 1..N, j in 1..N} binary;
+
+minimize f: sum {i in 1..N, j in 1..N} C[i,j] * x[i,j];
+
+subject to
+
+sommeColParLigne {i in 1..N} : sum {j in 1..N} x[i,j] = 1;
+
+sommeLigneParCol {j in 1..N} : sum {i in 1..N} x[i,j] = 1;
+
+printf "---Debut de la resolution ---\n";
+
+solve;
+
+printf "---Fin de la resolution ---\n";
+
+display x;
+display f;
+
+end;

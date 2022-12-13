@@ -1,0 +1,10 @@
+\* Problem: ModelCiment *\
+
+Maximize
+ BeneficeTotal: + 500 Q(11) + 700 Q(22)
+
+Subject To
+ RespectCapaciteDeChaqueMachine(Four2): + 40 Q(11) + 12 Q(22) = 360
+ RespectCapaciteDeChaqueMachine(Broyeuse2): + 20 Q(11) + 30 Q(22) = 480
+
+End

@@ -1,0 +1,50 @@
+#  GLPK model file created by SUN for RO teaching
+
+###############################  Model ###############################
+
+###################  Constants: Data to load   #########################
+
+param nbVille;
+
+param chemins{i in 1..nbVille, j in 1..nbVille};
+
+################### Variables ###################
+
+# Matrice de décision du chemin à prendre
+# si x[i,j] = 1 on prend le chemin de la ville_i vers la ville_j
+var x{i in 1..nbVille, j in 1..nbVille} binary;
+
+var u{i in 1..nbVille};
+
+###### Objective ######
+
+minimize Distance: 
+	sum{i in 1..nbVille, j in 1..nbVille} x[i,j]*chemins[i,j];
+        
+################### Constraints ###################
+
+subject to
+    #On ne peut pas être dans plusieurs ville en même temps
+    QuitteChaqueVille {i in 1..nbVille}:
+        sum {j in 1..nbVille} x[i,j] = 1;
+    VisiteChaqueVille {j in 1..nbVille}:
+        sum {i in 1..nbVille} x[i,j] = 1;
+
+    ArcConstraint1 {i in 2..nbVille}:
+        u[i] >= 2;
+    ArcConstraint2 {i in 2..nbVille, j in 2..nbVille}:
+        u[i] - u[j] + 1 <= (nbVille - 1)*(1-x[i,j]);
+
+###### Resolution ######
+
+printf "\n---Debut de la resolution ---\n";
+solve;
+printf "---Fin de la resolution ---\n\n";
+
+display x;
+
+printf "\nLa distance totale est de ";
+printf Distance;
+printf "\n\n";
+
+end;

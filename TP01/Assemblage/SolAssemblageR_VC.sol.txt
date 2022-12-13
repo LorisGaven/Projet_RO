@@ -1,0 +1,14 @@
+c Problem:    
+c Rows:       3
+c Columns:    2
+c Non-zeros:  5
+c Status:     OPTIMAL
+c Objective:  MargeTotale = 10285714.29 (MAXimum)
+c
+s bas 3 2 f f 10285714.2857143
+i 1 u 60 157142.857142857
+i 2 u 15000 57.142857142857
+i 3 b 642.857142857143 0
+j 1 b 428.571428571429 0
+j 2 b 642.857142857143 0
+e o f

@@ -1,0 +1,60 @@
+#  GLPK model file created by SUN for RO teaching
+
+###############################  Model ###############################
+
+###################  Constants: Data to load   #########################
+
+param nbDemande;
+param nbFluide;
+param nbMagasin;
+
+param Demande{i in 1..nbDemande, j in 1..nbFluide};
+param Stock{i in 1..nbMagasin, j in 1..nbFluide};
+param CoutUnitaire{i in 1..nbMagasin, j in 1..nbFluide};
+param CoutFixe{i in 1..nbDemande, j in 1..nbMagasin};
+param CoutVariable{i in 1..nbDemande, j in 1..nbMagasin};
+
+################### Variables ###################
+
+# Quantité de fluide_i envoyé par le magasin_j au client_k
+var x{i in 1..nbFluide, j in 1..nbMagasin, k in 1..nbDemande} integer;
+
+# Matrice binaire de décision de quel magasin sert quel client
+# z[i,j] = 1 si magasin_i sert le client_j, 0 sinon
+var z{i in 1..nbMagasin, j in 1..nbDemande} binary;
+
+###### Objective ######
+
+minimize CoutTotal: 
+	sum{i in 1..nbFluide, j in 1..nbMagasin, k in 1..nbDemande} 
+        (x[i,j,k]*(CoutUnitaire[j,i] + CoutVariable[k,j]) + z[j,k]*CoutFixe[k,j]);
+        
+################### Constraints ###################
+
+subject to 
+    VenteCorrespondDemandeClient {k in 1..nbDemande, i in 1..nbFluide}:
+        sum{j in 1..nbMagasin} x[i,j,k] = Demande[k,i];
+    VenteInfOuEgalAuStock {i in 1..nbFluide, j in 1..nbMagasin}:
+        sum{k in 1..nbDemande} x[i,j,k] <= Stock[j,i];
+    QuantiteEnvoyePositive {i in 1..nbFluide, j in 1..nbMagasin, k in 1..nbDemande}:
+        x[i,j,k] >= 0;
+    EnvoieDoncCoutFixe1 {j in 1..nbMagasin, k in 1..nbDemande}:
+        z[j,k] <= sum{i in 1..nbFluide} x[i,j,k];
+    EnvoieDoncCoutFixe2 {j in 1..nbMagasin, k in 1..nbDemande}:
+        sum{i in 1..nbFluide} x[i,j,k] <= 10000*z[j,k];
+
+###### Resolution ######
+
+printf "\n---Debut de la resolution ---\n";
+solve;
+printf "---Fin de la resolution ---\n\n";
+
+display x;
+printf "\n";
+display z;
+
+printf "\nLe coût total des demandes est de ";
+printf CoutTotal;
+printf "\n\n";
+
+end;

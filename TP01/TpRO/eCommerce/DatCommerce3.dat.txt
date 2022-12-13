@@ -1,0 +1,31 @@
+data;
+
+param nbDemande := 2;
+
+param nbFluide := 2;
+
+param nbMagasin := 3;
+
+param Demande: 1 2 :=
+             1 2 0
+             2 1 3 ;
+
+param Stock: 1    2 :=
+           1 2.5  1
+           2 1    2
+           3 2    1 ;
+
+param CoutUnitaire: 1 2 :=
+                  1 1 1
+                  2 2 3
+                  3 3 2 ;
+
+param CoutFixe:  1  2   3 :=
+              1 110 90 100
+              2 110 90 100 ;
+
+param CoutVariable:  1  2  3 :=
+                   1 10 1  5
+                   2 2  20 10 ;
+
+end;
